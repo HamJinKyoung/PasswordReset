@@ -15,6 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+
+# password_reset 기능 구현을 위해 필요한 거 import
+from django.urls import reverse_lazy
+from django.contrib.auth import views as auth_views
 import app.views
 
 urlpatterns = [
@@ -29,4 +33,7 @@ urlpatterns = [
     path('app/signin/', app.views.signin, name="signin"),
     path('app/', include('django.contrib.auth.urls')),
     path('app/signup/', app.views.signup, name="signup"),
+    # password_reset
+    path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
 ]
