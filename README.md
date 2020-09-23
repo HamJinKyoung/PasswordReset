@@ -25,7 +25,7 @@ EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 
 django.contrib.auth에 있는 password_reset기능을 사용하기 위해 필요한 urlpatterns를 추가해준다.
 
-```
+```python
 from django.urls import reverse_lazy
 from django.contrib.auth import views as auth_views
 
@@ -45,7 +45,7 @@ urlpatterns = [
 `<a href="{% url 'password_reset' %}">비밀번호찾기</a>`을 누르면 가장 먼저 뜨는 페이지.
 form을 이용해 비밀번호를 재설정하기 위한 이메일을 받을 이메일주소를 받는다.
 
-```
+```html
 <h1>Forgot your password?</h1>
 <span class="subheading">Enter your email address below, and we'll email instructions for setting a new one.</span>
 <form method="POST">
@@ -89,7 +89,7 @@ The 127.0.0.1:8000 team
 
 password_reset.html에서 받은 이메일 주소로 이메일을 보낸 후, 사용자에게 이메일을 확인해보라는 메시지를 담은 페이지.
 
-```
+```html
 <h1>Check your inbox.</h1>
 <span>We've emailed you instructions for setting your password. You should receive the email shortly!</span>
 ```
@@ -99,7 +99,7 @@ password_reset.html에서 받은 이메일 주소로 이메일을 보낸 후, �
 보낸 이메일에 있는 url주소를 통해 들어갔을 때 보여지는 페이지.
 새로운 비밀번호를 입력받고, 비밀번호를 변경해준다.
 
-```
+```html
 <h1>Set a new password!</h1>
 {% if validlink %}
 <form method="POST">
@@ -116,7 +116,7 @@ password_reset.html에서 받은 이메일 주소로 이메일을 보낸 후, �
 비밀번호 초기화가 완료되었을 때 나오는 페이지.
 로그인 페이지로 갈 수 있도록 a태그를 이용해 링크를 걸어주었다.
 
-```
+```html
 <h1>Password reset complete</h1>
 <p>Your new password has been set. You can log in now on the <a href="{% url 'signin' %}">log in page</a>.</p>
 ```
