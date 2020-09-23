@@ -2,7 +2,7 @@
 
 ## settings.py
 
-```
+```python
 EMAIL_HOST = 'smtp.gmail.com'
 # 메일을 호스트하는 서버
 EMAIL_PORT = '587'
